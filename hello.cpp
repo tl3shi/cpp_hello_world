@@ -16,7 +16,6 @@ int my_sum(int x)
 int sum_array(int a[], int len)
 {
     int sum = 0;
-    //int len = sizeof(a) / sizeof(int);
     for (int i = 1 ; i < len; i++)
     {
         //cout<<a[i]<<"  ";
@@ -42,7 +41,7 @@ void test()
 {
     int a[LENGTH];
     
-    for(int j = 123; j < 345; j++)
+    for(int j = 123; j < 321; j++)
     {
         for(int i = 0; i < LENGTH; i++)
             a[i] = 0;
@@ -56,9 +55,9 @@ void test()
         a[gewei] = 1;
         a[shiwei] = 1;
         a[baiwei] = 1;
-        //cout<<endl<<gewei<<","<<shiwei<<","<<baiwei<<endl; 
+        // cout<<endl<<gewei<<","<<shiwei<<","<<baiwei<<endl; 
         temp = 2 * j;
-        //cout<<"temp="<<temp; 
+        // cout<<"temp="<<temp; 
         
         gewei = temp % 10;
         shiwei = temp / 10 % 10;
@@ -68,7 +67,7 @@ void test()
         a[baiwei] = 1;
         
         temp = 3 * j;
-        //cout<<"temp="<<temp; 
+        // cout<<"temp="<<temp; 
         
         gewei = temp % 10;
         shiwei = temp / 10 % 10;
@@ -77,16 +76,21 @@ void test()
         a[shiwei] = 1;
         a[baiwei] = 1;
         
-        //cout<<"j="<<j<<endl;
+        // cout<<"j="<<j<<endl;
         int len = sizeof(a) / sizeof(int);
-        //cout<<"len = "<<len<<endl;
+        // cout<<"len = "<<len<<endl;
         int t_sum = sum_array(a, len);    
-        //cout<<"sum="<<t_sum<<endl;
+        // cout<<"sum="<<t_sum<<endl;
         if (t_sum == 9)
         { 
             cout<<j<<","<<2*j<<","<<3*j<<endl;
         }
-        //exit(0); 
+        /*
+         *when j is 334, 3*j=1002 ,baiwei=10
+         *index out of bounds 
+         */
+        if (j == 334)
+            exit(0); 
     }
 
 }
