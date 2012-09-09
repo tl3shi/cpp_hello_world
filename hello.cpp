@@ -42,7 +42,7 @@ void test()
 {
     int a[LENGTH];
     
-    for(int j = 123; j < 345; j++)
+    for(int j = 333; j < 345; j++)
     {
         for(int i = 0; i < LENGTH; i++)
             a[i] = 0;
