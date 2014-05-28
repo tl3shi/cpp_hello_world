@@ -80,6 +80,22 @@ struct BStruct: AA
     }
 };
 
+
+struct Base
+{
+    virtual void fun()
+    {
+        printf("Base\n");
+    }
+};
+struct Child: Base
+{
+    void fun()
+    {
+        printf("Child\n");
+    }
+};
+
 int main()
 {
     B b, b1(1);
@@ -94,7 +110,7 @@ int main()
     printf("%d, %c\n", c.c, c.d);
     printf("%d, %c, %d\n", c1.c, c1.d, c1.d);
     printf("%d, %d\n", c2.c, c2.d);
-    //printf("%d, %c\n", c3.c, c3.d);//uninit, vs2012 will show Run-Time Check Failure #3 window, 
+    printf("%d, %c\n", c3.c, c3.d);//uninit, vs2012 will show Run-Time Check Failure #3 window, 
     c3.func();//uninit, but this way will pass the "Run-Time Check" in vs2012
     //D d = {1,'y'}; //error: in C++98 ‘d’ must be initialized by constructo not by ‘{...}’
     //printf("%d, %c\n", d.c, d.d);
@@ -109,7 +125,14 @@ int main()
     bclass.fun();
     bstruct.func();
     //printf("%d", bclass.b); // “AA::b”不可访问，因为“BClass”使用“private”从“AA”继承
-    printf("%d", bstruct.b); //OK
+    printf("%d\n", bstruct.b); //OK
+
+    Base base;
+    Child child;
+    base.fun();
+    child.fun();
+    Base* base2 = &child;
+    base2->fun();
 
     return 0;
 }
