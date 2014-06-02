@@ -25,11 +25,22 @@ struct Son : Parent
     }
 };
 
+struct PrivateSon : /*private*/protected Parent
+{
+    void fun()
+    {
+        cout << "Priave Son" << endl;
+    }
+};
+
 int main()
 {
     Son son;
     Parent * p = &son;
     p->fun();
     
+    Parent * parent = new PrivateSon();
+    PrivateSon * pSon1 = dynamic_cast<PrivateSon*>(parent);
+    pSon1->fun();
     return 0;
 }
