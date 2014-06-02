@@ -71,7 +71,11 @@ struct B
 
 int main()
 {
-
     A v(1);
     B b(v);
+    /*cout << "----" << endl;
+    A a1;
+    A a2 = a1;
+    a1 = a2;
+    A a3 = a1;*/
 }
