@@ -29,10 +29,10 @@ struct B // 24
 };
 void print(const B &b1, const B &b2)
 {
-    cout << "a: " << (int)&(b1.b) - (int)&(b1.a) << endl; //4
-    cout << "b: " << (int)&(b1.c) - (int)&(b1.b) << endl; //4
-    cout << "c: " << (int)&(b1.d) - (int)&(b1.c) << endl; //8
-    cout << "d: " << (int)&(b2.a) - (int)&(b1.d) << endl; //8
+    cout << "a: " << (long)&(b1.b) - (long)&(b1.a) << endl; //4
+    cout << "b: " << (long)&(b1.c) - (long)&(b1.b) << endl; //4
+    cout << "c: " << (long)&(b1.d) - (long)&(b1.c) << endl; //8
+    cout << "d: " << (long)&(b2.a) - (long)&(b1.d) << endl; //8
 }
 
 struct BB //40
@@ -51,6 +51,7 @@ struct C //24
     char c; // 1+3
     int d; // 4
 };
+
 
 int main()
 {

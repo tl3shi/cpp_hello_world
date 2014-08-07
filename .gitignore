@@ -1,4 +1,36 @@
-a.out
+Debug/*
+*/Debug/*
+*/*/Debug/*
+Release/*
+*/Release/*
+*/*/Release/*
+*.suo
 *.exe
-*.o
 *.swp
+# Binary version of the current resource script file;used for quick loading.
+*.aps
+
+*.bak
+*~
+*.out*
+*.dSYM
+
+thumbs.db
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+*.1
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+*.DS_Store
+*.xcuserstate

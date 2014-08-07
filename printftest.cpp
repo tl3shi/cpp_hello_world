@@ -1,4 +1,10 @@
 #include <stdio.h>
+void printftest()
+{
+    printf("%f\n", 1);
+    printf("%d\n", 6.01);
+}
+
 int main()
 {
     printf("%s,%d\n", "helloworld", 100);
