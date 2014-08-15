@@ -39,12 +39,16 @@ struct B //16+8
     {
         cout << "B func2" << endl;
     }
+   virtual ~B(){}
 };
 
 struct B1 //1(+7) + 8
 {
     char bb;
-    virtual void fun(){}
+    virtual void fun()
+    {
+         cout << "B1 func" << endl;
+    }
 };
 
 //24
@@ -62,20 +66,35 @@ struct D1: B,B1
 {
     double dd;
     char x;
+    D1()
+    {
+        cout << "D1()" << endl;
+    }
+    ~D1(){
+    cout << "~D1()" << endl;
+    }
 };
 
 struct D2:B1
 {
+    D2()
+    {
+        cout << "d2" << endl;
+    }
+    ~D2(){
+        
+    }
 };
-int main()
+void testalignvitual()
 {
     cout << sizeof(B) << endl;
     cout << sizeof(B1) << endl;
     cout << sizeof(D) << endl;
     cout << sizeof(D1) << endl;
     cout << sizeof(D2) << endl;
-    return 0;
-    
+}
+int main()
+{
     Derived d;
     #ifdef property
     printf("&B::a=%p\n", &B::a);
@@ -95,8 +114,28 @@ int main()
     cout << (int*)(&b) << endl;
     cout << (int*)(*(int*)(&b)) << endl;
     cout <<"XX" <<endl;
-    typedef void(*func_pointer)(void);
-    func_pointer fp = NULL;
-    cout << "fp:" << endl;
+    D1 d1;
+    typedef void(*func_pointer)(void); //for win, ok, mac wrong, access error
+    func_pointer fp = (func_pointer)*((int*)*(int*)(&d1));//b
+    fp();//B func1
+    fp = (func_pointer)*((int*)*(int*)(&d1)+1);
+    fp();//B func2
+    fp = (func_pointer)*((int*)*(int*)(&d1)+4);//b1 
+    fp();//B1 func
+
+    int **vtable = (int**)&d1;
+    fp = (func_pointer)vtable[0][0];
+    fp();//B fun1
+    fp = (func_pointer)vtable[0][1];
+    fp();//B fun2
+    fp = (func_pointer)vtable[0][2];//! ~D1(); access error
+    //fp();//
+
+    fp = (func_pointer)vtable[0][3]; //fp = 0x00c6f260 {test.exe!const D1::`RTTI Complete Object Locator'{for `B1'}}
+    //fp();
+    fp = (func_pointer)vtable[0][4]; 
+    fp();// B1 func//
+
+    
     return 0;
 }
