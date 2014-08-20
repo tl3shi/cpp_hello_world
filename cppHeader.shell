@@ -1,0 +1,7 @@
+tanglei:cpp_hello_world TangLei$ g++ -c cppHeader.cpp
+tanglei:cpp_hello_world TangLei$ g++ -c cppHeaderTest.c cppHeader.o
+clang: warning: treating 'c' input as 'c++' when in C++ mode, this behavior is
+deprecated
+clang: warning: cppHeader.o: 'linker' input unused
+tanglei:cpp_hello_world TangLei$ ./a.out
+cppHeader 3

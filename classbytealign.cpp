@@ -52,9 +52,28 @@ struct C //24
     int d; // 4
 };
 
+struct X
+{
+    short a1;
+    short a2;
+    short a3;
+};
+
+struct V1{};
+struct V2:virtual V1{};
+struct V3:virtual V1{};
+struct V4:V1{};
+struct V5:V3, V2{};
+struct V6:V3, V4{};
 
 int main()
 {
+    cout <<"sizeof(X) "<< sizeof(X) << endl;//6 
+    cout <<"sizeof(V1)"<<  sizeof(V1) << endl;//1
+    cout <<"sizeof(V2)"<<  sizeof(V2) << endl;//8
+    cout <<"sizeof(V5)"<<  sizeof(V5) << endl;//16, two vptr
+    cout <<"sizeof(V6)"<<  sizeof(V6) << endl;//16, two vptr
+    cout <<"sizeof(V4)"<<  sizeof(V4) << endl;//1
     cout << sizeof(A) << endl; //16
     cout << sizeof(A1) << endl; //12
     cout << sizeof(B) << endl; //24
