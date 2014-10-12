@@ -31,7 +31,11 @@ public:
 
 int main()
 {
-    A a;
+    unsigned int a = 6;
+    int b = -20;
+    cout<<(a+b);
+    (a+b>6)?puts(">6"):puts("<=6");
+    A a0;
     A a1(2);
     return 0;
 }

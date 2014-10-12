@@ -12,6 +12,7 @@ public:
     
     void Clear()
     {
+        cout << typeid(*this).name() << sizeof(*this) << endl;
         memset(this,0,sizeof(*this));
     }
     
@@ -30,6 +31,8 @@ public:
     ClassB()
     {
         cout<<"B: "<<this<<endl;
+
+        cout << typeid(*this).name() << sizeof(*this) << endl;
     }
     void func()
     {
